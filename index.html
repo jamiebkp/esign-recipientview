@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract Agreement — Recipient View</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Great+Vibes&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+    body { margin: 0; }
+    .sidebar-scroll::-webkit-scrollbar { width: 0px; }
+    .sidebar-scroll { scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="bg-[#f9fafb] h-screen overflow-hidden">
+  <div class="relative flex h-full w-full">
+
+    <!-- ===== LEFT SIDEBAR ===== -->
+    <div class="flex h-full items-start gap-2.5 px-3 py-4 shrink-0">
+
+      <!-- Panel -->
+      <div id="sidebar-panel"
+           class="bg-white rounded-xl h-full w-[220px] flex flex-col gap-6 px-4 py-6 overflow-y-auto sidebar-scroll
+                  shadow-[0px_0px_8px_-2px_rgba(16,24,40,0.10),0px_0px_4px_-2px_rgba(16,24,40,0.06)]">
+        <p class="text-sm font-medium text-black shrink-0">8 pages</p>
+        <div class="flex flex-col gap-4" id="page-list"></div>
+      </div>
+
+      <!-- Scroll indicator pill -->
+      <div class="bg-[#c7cad4] rounded-full shrink-0" style="width:6px; height:163px; margin-top:70px;"></div>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="flex flex-1 flex-col min-w-0 h-full">
+
+      <!-- Header -->
+      <header class="relative flex items-center w-full shrink-0 px-5" style="height:72px;">
+        <!-- Title — absolutely centred so button widths don't affect it -->
+        <p class="absolute left-1/2 -translate-x-1/2 text-base font-semibold text-[#374151] whitespace-nowrap">
+          Contract agreement
+        </p>
+        <!-- Buttons — pushed to the right, unconstrained width -->
+        <div class="ml-auto flex items-center gap-4">
+          <button id="btn-decline"
+                  class="border border-[#e5e7eb] rounded-lg text-sm font-medium text-[#1f2a37]
+                         hover:bg-gray-50 active:bg-gray-100 transition-colors whitespace-nowrap"
+                  style="height:40px; padding:0 12px;">
+            Decline
+          </button>
+          <button id="btn-get-started"
+                  class="bg-[#095ae9] rounded-lg text-sm font-medium text-white flex items-center gap-2
+                         hover:bg-blue-700 active:bg-blue-800 transition-colors whitespace-nowrap"
+                  style="height:40px; padding:0 12px;">
+            Get started
+            <img src="http://localhost:3845/assets/1828b820282d2d8a85e85324c6b145f0adfe2f9f.svg"
+                 style="width:16px;height:16px;" alt="">
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable document area -->
+      <div id="scroll-area" class="flex-1 flex justify-center items-start overflow-y-auto" style="padding: 0 0 110px 0;">
+
+          <!-- Document container — badges are relative to this -->
+          <div id="doc-container" class="relative shrink-0" style="width:700px;">
+
+            <!-- Page image -->
+            <div class="border border-[#d1d5db] overflow-hidden relative" style="height:932px;">
+              <img src="http://localhost:3845/assets/4a986f6d8d4277daa40c3704bc2bd53866402ba9.png"
+                   class="absolute max-w-none pointer-events-none"
+                   style="width:103.85%; height:103.75%; left:-1.92%; top:-2.42%;"
+                   alt="Contract Agreement document">
+            </div>
+
+            <!-- Signature badge 0 -->
+            <div id="sig-badge-0"
+                 class="sig-badge absolute flex items-center gap-2 bg-[#e1effe] rounded-md cursor-pointer
+                        hover:bg-blue-200 transition-colors"
+                 style="left:201px; top:547px; padding:8px 12px;"
+                 data-tag-index="0">
+              <img src="signature.svg"
+                   style="width:16px;height:16px;" alt="">
+              <span class="text-sm font-medium text-[#1e429f] whitespace-nowrap">Signature</span>
+            </div>
+
+            <!-- Signature badge 1 -->
+            <div id="sig-badge-1"
+                 class="sig-badge absolute flex items-center gap-2 bg-[#e1effe] rounded-md cursor-pointer
+                        hover:bg-blue-200 transition-colors"
+                 style="left:442px; top:718px; padding:8px 12px;"
+                 data-tag-index="1">
+              <img src="signature.svg"
+                   style="width:16px;height:16px;" alt="">
+              <span class="text-sm font-medium text-[#1e429f] whitespace-nowrap">Signature</span>
+            </div>
+
+            <!-- Signature badge 2 -->
+            <div id="sig-badge-2"
+                 class="sig-badge absolute flex items-center gap-2 bg-[#e1effe] rounded-md cursor-pointer
+                        hover:bg-blue-200 transition-colors"
+                 style="left:201px; top:850px; padding:8px 12px;"
+                 data-tag-index="2">
+              <img src="signature.svg"
+                   style="width:16px;height:16px;" alt="">
+              <span class="text-sm font-medium text-[#1e429f] whitespace-nowrap">Signature</span>
+            </div>
+
+          </div><!-- end document container -->
+      </div><!-- end scrollable area -->
+
+    </div><!-- end main content -->
+
+    <!-- ===== "Next" ARROW — fixed, JS-positioned to doc left edge ===== -->
+    <div id="next-arrow"
+         class="fixed flex items-center justify-center pointer-events-none select-none"
+         style="width:73px; height:36px; z-index:20;">
+      <img src="http://localhost:3845/assets/1cb5939d2894d07c827f48709aad072ecb5fc9c8.svg"
+           style="position:absolute; inset:0; width:100%; height:100%;" alt="">
+      <span class="relative text-sm font-bold text-[#8e4b10] whitespace-nowrap"
+            style="z-index:1; padding-right:14px;">Next</span>
+    </div>
+
+    <!-- ===== TOAST / PROGRESS BAR — fixed at bottom, JS-centred on document ===== -->
+    <div id="progress-toast"
+         class="fixed flex items-center gap-5 bg-[#1f2a37] rounded-2xl overflow-hidden px-4
+                shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.10),0px_4px_6px_0px_rgba(0,0,0,0.05)]"
+         style="bottom:24px; height:72px; min-width:340px; max-width:500px; transform:translateX(-50%);">
+
+      <!-- Progress info -->
+      <div class="flex items-center gap-2.5">
+        <span id="progress-text" class="text-sm font-medium text-[#9ca3af] whitespace-nowrap">0/11</span>
+        <div class="bg-[#4b5563] rounded-lg overflow-hidden" style="width:214px; height:10px;">
+          <div id="progress-bar"
+               class="bg-[#095ae9] h-full rounded-lg transition-all duration-500 ease-out"
+               style="width:0%;"></div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <button id="btn-toast-cta"
+              class="bg-[#095ae9] rounded-lg text-sm font-medium text-white flex items-center gap-2
+                     hover:bg-blue-700 active:bg-blue-800 transition-colors shrink-0 whitespace-nowrap"
+              style="height:32px; padding:0 12px;">
+        Get started
+        <img src="http://localhost:3845/assets/dbcc5ac934715f3c49c0d1c0977f2824308572c3.svg"
+             style="width:16px;height:16px;" alt="">
+      </button>
+    </div>
+
+    <!-- ===== DECLINE MODAL ===== -->
+    <div id="decline-modal"
+         class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden"
+         style="z-index:100;">
+      <div class="bg-white rounded-xl flex flex-col overflow-hidden"
+           style="width:483px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.10),0 4px 6px 0 rgba(0,0,0,0.05);">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b border-[#e5e7eb] shrink-0"
+             style="height:72px; padding:16px 20px;">
+          <div style="width:40px;"></div>
+          <p class="text-xl font-bold text-[#111928]">Decline signing document</p>
+          <div style="width:40px;"></div>
+        </div>
+
+        <!-- Body -->
+        <div class="bg-white shrink-0" style="padding:24px;">
+          <div class="flex flex-col" style="gap:8px;">
+            <label class="text-sm font-medium text-[#111928]">Reason for declining</label>
+            <textarea id="decline-reason"
+                      placeholder="Write text here..."
+                      class="bg-[#f9fafb] border border-[#d1d5db] rounded-xl text-base text-[#111928] w-full resize-none"
+                      style="height:144px; padding:12px 16px; outline:none; font-family:'Inter',sans-serif; color:#111928;"
+            ></textarea>
+            <p class="text-sm text-[#6b7280]" style="line-height:1.5;">This information will be sent to the document sender</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between border-t border-[#e5e7eb] shrink-0"
+             style="height:96px; padding:24px;">
+          <button id="decline-cancel"
+                  class="border border-[#e5e7eb] rounded-lg text-base font-medium text-[#1f2a37]
+                         hover:bg-gray-50 transition-colors"
+                  style="height:48px; padding:12px 20px;">
+            Cancel
+          </button>
+          <button id="decline-confirm"
+                  class="rounded-lg text-base font-medium text-white hover:opacity-90 transition-opacity"
+                  style="height:48px; padding:12px 20px; background:#c81e1e;">
+            Decline
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== DECLINED CONFIRMATION (shown after declining) ===== -->
+    <div id="declined-overlay"
+         class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden"
+         style="z-index:100;">
+      <div class="bg-white rounded-2xl shadow-xl p-10 text-center flex flex-col items-center gap-4"
+           style="max-width:400px;">
+        <p class="text-xl font-semibold text-[#1f2a37]">Contract Declined</p>
+        <p class="text-sm text-[#9ca3af]">You have declined this contract agreement.</p>
+        <button id="btn-undo-decline"
+                class="border border-[#e5e7eb] rounded-lg text-sm font-medium text-[#374151]
+                       hover:bg-gray-50 transition-colors mt-2"
+                style="height:40px; padding:0 20px;">
+          Go back
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== DONE SCREEN ===== -->
+    <div id="done-screen" class="fixed inset-0 bg-white flex flex-col hidden" style="z-index:300;">
+
+      <!-- Top bar -->
+      <div class="bg-white border-b border-[#e5e7eb] shrink-0 flex items-center" style="height:48px; padding:0 20px;">
+        <div class="relative shrink-0" style="width:82px; height:28px;">
+          <!-- B icon -->
+          <img src="http://localhost:3845/assets/5ba75c28083c5d1532a7ee1c788be5287a395a71.svg"
+               style="position:absolute; left:4px; top:5px; width:12px; height:18px;" alt="">
+          <!-- bookipi wordmark -->
+          <img src="http://localhost:3845/assets/de61d4d00bd946cca1c269bbca4dbf26b2c54fc9.svg"
+               style="position:absolute; left:21px; top:7px; width:56px; height:14px;" alt="">
+        </div>
+      </div>
+
+      <!-- Main content — vertically centred -->
+      <div class="flex-1 flex flex-col items-center justify-center" style="gap:16px;">
+        <img src="http://localhost:3845/assets/d02b35e8e6d3b7706533bc7b6ef3ed72b8b4ef27.svg"
+             style="width:72px; height:72px;" alt="">
+        <div class="flex flex-col items-center text-center" style="gap:8px;">
+          <p class="font-bold text-[#111928]" style="font-size:24px; line-height:1.4; letter-spacing:-0.24px;">
+            Document has been signed!
+          </p>
+          <p class="text-[#374151]" style="font-size:16px; line-height:1.5; max-width:600px;">
+            You will receive a confirmation email with a link to your signed document.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom CTA banner -->
+      <div class="flex flex-col items-center shrink-0" style="padding:32px;">
+        <div class="bg-[#ebf5ff] rounded-2xl flex items-center" style="padding:24px; gap:32px;">
+          <div class="flex items-center" style="gap:16px;">
+            <div class="bg-white border border-[#e1effe] rounded-lg flex items-center justify-center shrink-0" style="padding:12px;">
+              <img src="http://localhost:3845/assets/37a47f49c39eecbeacd111e7df0b88cfedddfed1.svg"
+                   style="width:19px; height:19px;" alt="">
+            </div>
+            <div class="flex flex-col" style="gap:4px;">
+              <p class="font-semibold text-[#111928] whitespace-nowrap" style="font-size:16px; line-height:1.5;">
+                Free e-signatures for your business
+              </p>
+              <p class="text-[#6b7280] whitespace-nowrap" style="font-size:14px; line-height:1.5;">
+                Create a free account to save this document or send your own
+              </p>
+            </div>
+          </div>
+          <button class="bg-[#095ae9] rounded-lg text-white font-medium whitespace-nowrap hover:bg-blue-700 transition-colors shrink-0"
+                  style="height:40px; padding:0 12px; font-size:14px;">
+            Create account
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== AGREE & SIGN MODAL ===== -->
+    <div id="agree-modal"
+         class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden"
+         style="z-index:200;">
+      <div class="bg-white rounded-xl flex flex-col overflow-hidden"
+           style="width:483px; box-shadow:0 10px 15px -3px rgba(0,0,0,0.10),0 4px 6px 0 rgba(0,0,0,0.05);">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b border-[#e5e7eb] shrink-0"
+             style="height:72px; padding:16px 20px;">
+          <div style="width:28px;"></div>
+          <p class="text-xl font-bold text-[#111928]">Agree &amp; sign</p>
+          <div style="width:28px;"></div>
+        </div>
+
+        <!-- Body -->
+        <div class="flex flex-col bg-white shrink-0" style="gap:24px; padding:24px;">
+
+          <!-- Signer card -->
+          <div class="flex items-center justify-between bg-[#f9fafb] rounded-lg" style="padding:16px;">
+            <div class="flex items-center" style="gap:8px;">
+              <div class="bg-[#e1effe] rounded-full flex items-center justify-center shrink-0"
+                   style="width:32px; height:32px;">
+                <span id="agree-initials" class="text-sm font-medium text-[#1a56db]">JP</span>
+              </div>
+              <div class="flex flex-col" style="gap:2px;">
+                <span id="agree-name" class="text-sm font-semibold text-[#111928]">Jamie Phan</span>
+                <span class="text-xs text-[#374151]" style="line-height:1.4;">jamie@bookipi.com</span>
+              </div>
+            </div>
+            <span id="agree-date" class="text-xs text-[#374151]" style="line-height:1.4; white-space:nowrap;">signed on 25 May 2026</span>
+          </div>
+
+          <!-- Divider -->
+          <div style="height:1px; background:#e5e7eb; width:100%;"></div>
+
+          <!-- Checkbox -->
+          <div class="flex items-start" style="gap:12px;">
+            <div class="flex items-start shrink-0" style="margin-top:1px;">
+              <input id="agree-checkbox" type="checkbox"
+                     class="cursor-pointer rounded"
+                     style="width:16px; height:16px; border:1px solid #d1d5db; accent-color:#095ae9;">
+            </div>
+            <label for="agree-checkbox" class="text-sm font-medium text-[#111928] cursor-pointer" style="line-height:1.5;">
+              I have read and understood this agreement, and by clicking Complete, I confirm my signature is legally binding.
+            </label>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between border-t border-[#e5e7eb] shrink-0"
+             style="height:96px; padding:24px;">
+          <button id="agree-cancel"
+                  class="border border-[#e5e7eb] rounded-lg text-base font-medium text-[#1f2a37]
+                         hover:bg-gray-50 transition-colors"
+                  style="height:48px; padding:12px 20px;">
+            Cancel
+          </button>
+          <button id="agree-complete"
+                  class="rounded-lg text-base font-medium transition-colors"
+                  style="height:48px; padding:12px 20px; background:#f3f4f6; color:#d1d5db; cursor:not-allowed;">
+            Complete
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== SIGNATURE MODAL ===== -->
+    <div id="signature-modal"
+         class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center hidden"
+         style="z-index:200;">
+      <div class="bg-white rounded-xl flex flex-col overflow-hidden"
+           style="width:628px; max-height:90vh; box-shadow:0 10px 15px -3px rgba(0,0,0,0.10),0 4px 6px 0 rgba(0,0,0,0.05);">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b border-[#e5e7eb] shrink-0"
+             style="height:72px; padding:16px 20px;">
+          <button id="modal-back"
+                  class="flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
+                  style="width:28px; height:28px; padding:4px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M12.5 15L7.5 10L12.5 5" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <p class="text-xl font-bold text-[#111928]">Add signature</p>
+          <div style="width:28px;"></div>
+        </div>
+
+        <!-- Body -->
+        <div class="flex flex-col overflow-y-auto" style="gap:24px; padding:24px; flex:1;">
+
+          <!-- Tabs -->
+          <div class="flex shrink-0" style="gap:48px; border-bottom:1px solid #e5e7eb; height:40px;">
+            <button class="modal-tab text-base font-semibold transition-colors"
+                    style="border-bottom:2px solid #1a56db; color:#1a56db; margin-bottom:-1px; padding-bottom:16px;"
+                    data-tab="type">Type</button>
+            <button class="modal-tab text-base font-semibold transition-colors"
+                    style="border-bottom:2px solid transparent; color:#374151; margin-bottom:-1px; padding-bottom:16px;"
+                    data-tab="draw">Draw</button>
+            <button class="modal-tab text-base font-semibold transition-colors"
+                    style="border-bottom:2px solid transparent; color:#374151; margin-bottom:-1px; padding-bottom:16px;"
+                    data-tab="upload">Upload</button>
+          </div>
+
+          <!-- Tab: Type -->
+          <div id="modal-tab-type" style="display:flex; flex-direction:column; gap:24px;">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <label class="text-sm font-medium text-[#111928]">Full name</label>
+              <input id="sig-name-input" type="text" value="Jamie Phan"
+                     class="bg-[#f9fafb] border border-[#d1d5db] rounded-lg text-base text-[#111928] w-full"
+                     style="height:48px; padding:12px 16px; outline:none; font-family:'Inter',sans-serif;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <p class="text-sm font-medium text-[#111928]">Change font</p>
+              <div style="display:flex; gap:16px; overflow-x:auto;">
+                <div class="font-option cursor-pointer rounded-lg flex items-center justify-center shrink-0"
+                     style="padding:32px 48px; background:#ebf5ff; border:2px solid #095ae9;"
+                     data-font="Great Vibes">
+                  <span class="sig-preview text-[#111928]"
+                        style="font-family:'Great Vibes',cursive; font-size:24px; line-height:1.5; white-space:nowrap;">Jamie Phan</span>
+                </div>
+                <div class="font-option cursor-pointer rounded-lg flex items-center justify-center shrink-0"
+                     style="padding:32px 48px; background:#f3f4f6; border:2px solid transparent;"
+                     data-font="Pacifico">
+                  <span class="sig-preview text-[#111928]"
+                        style="font-family:'Pacifico',cursive; font-size:24px; line-height:1.5; white-space:nowrap;">Jamie Phan</span>
+                </div>
+                <div class="font-option cursor-pointer rounded-lg flex items-center justify-center shrink-0"
+                     style="padding:32px 48px; background:#f3f4f6; border:2px solid transparent;"
+                     data-font="Dancing Script">
+                  <span class="sig-preview text-[#111928]"
+                        style="font-family:'Dancing Script',cursive; font-size:24px; line-height:1.5; white-space:nowrap;">Jamie Phan</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-[#111928]">By selecting Done, I confirm that this is the electronic version of my signature</p>
+          </div>
+
+          <!-- Tab: Draw -->
+          <div id="modal-tab-draw" style="display:none; flex-direction:column; gap:16px; align-items:center;">
+            <div style="width:100%; border:1px solid #d1d5db; border-radius:8px; overflow:hidden; background:white;">
+              <canvas id="draw-canvas" style="display:block; width:100%; height:200px; cursor:crosshair; touch-action:none;"></canvas>
+            </div>
+            <button id="draw-clear"
+                    class="text-sm font-medium text-[#374151] border border-[#e5e7eb] rounded-lg hover:bg-gray-50 transition-colors"
+                    style="height:36px; padding:0 16px;">
+              Clear
+            </button>
+          </div>
+
+          <!-- Tab: Upload -->
+          <div id="modal-tab-upload" style="display:none; flex-direction:column; align-items:center;">
+            <label id="upload-label"
+                   style="display:flex; flex-direction:column; align-items:center; justify-content:center;
+                          border:2px dashed #d1d5db; border-radius:8px; cursor:pointer; width:100%; height:200px;">
+              <svg width="40" height="40" viewBox="0 0 48 48" fill="none" style="margin-bottom:12px;">
+                <path d="M16 32C11.6 32 8 28.4 8 24C8 20 10.8 16.6 14.6 16.1C15.4 11.5 19.4 8 24 8C29.4 8 33.8 12.4 34 17.8C37.4 18.5 40 21.4 40 25C40 29 36.8 32 32.8 32"
+                      stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 36L24 32L28 36" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M24 32V44" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-sm font-medium text-[#374151]">Click to upload</span>
+              <span style="font-size:12px; color:#9ca3af; margin-top:4px;">PNG, JPG, SVG up to 5MB</span>
+              <input id="upload-input" type="file" style="display:none;" accept="image/*">
+            </label>
+            <div id="upload-preview" style="display:none; margin-top:12px; text-align:center;">
+              <img id="upload-img" style="max-width:100%; max-height:120px; border-radius:8px; border:1px solid #e5e7eb;" alt="">
+            </div>
+          </div>
+
+        </div><!-- end body -->
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between border-t border-[#e5e7eb] shrink-0"
+             style="height:96px; padding:24px;">
+          <button id="modal-cancel"
+                  class="border border-[#e5e7eb] rounded-lg text-base font-medium text-[#1f2a37]
+                         hover:bg-gray-50 transition-colors"
+                  style="height:48px; padding:12px 20px;">
+            Cancel
+          </button>
+          <button id="modal-done"
+                  class="bg-[#095ae9] rounded-lg text-base font-medium text-white
+                         hover:bg-blue-700 active:bg-blue-800 transition-colors"
+                  style="height:48px; padding:12px 20px;">
+            Done
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end root -->
+
+  <script>
+    // ─── Constants ────────────────────────────────────────────────────────────
+    const THUMBNAIL_SRC = 'http://localhost:3845/assets/d53ded07b3767b39d88ea67b1aff4407ea30601f.png';
+    const PENCIL_ICON   = 'http://localhost:3845/assets/1828b820282d2d8a85e85324c6b145f0adfe2f9f.svg';
+    const PENCIL_ICON2  = 'http://localhost:3845/assets/dbcc5ac934715f3c49c0d1c0977f2824308572c3.svg';
+    const TOTAL_PAGES   = 8;
+    const TAGS          = [547, 718, 850];  // px from doc top for each badge
+
+    // ─── State ────────────────────────────────────────────────────────────────
+    let currentPage  = 1;
+    let started      = false;
+    let tagIndex     = 0;
+    let completed    = 0;
+    let signedTags   = {};  // { 0: {name, font}, 1: {name, font} }
+
+    // ─── Page thumbnail list ──────────────────────────────────────────────────
+    function renderPageList() {
+      const list = document.getElementById('page-list');
+      list.innerHTML = '';
+      for (let i = 1; i <= TOTAL_PAGES; i++) {
+        const active = i === currentPage;
+        const item   = document.createElement('div');
+        item.className = [
+          'flex items-center px-3 py-4 rounded-lg cursor-pointer transition-colors shrink-0',
+          active ? 'bg-[#f3f4f6] border border-[#e5e7eb]'
+                 : 'border border-transparent hover:bg-gray-50'
+        ].join(' ');
+        item.style.height = '200px';
+        item.innerHTML = `
+          <div class="flex gap-4 items-start">
+            <span class="text-sm font-medium text-black shrink-0" style="min-width:10px;">${i}</span>
+            <div class="border border-[#e5e7eb] overflow-hidden relative shrink-0" style="width:131px; height:170px;">
+              <img src="${THUMBNAIL_SRC}" class="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="Page ${i}">
+            </div>
+          </div>`;
+        item.addEventListener('click', () => goToPage(i));
+        list.appendChild(item);
+      }
+    }
+
+    function goToPage(page) {
+      currentPage = Math.max(1, Math.min(page, TOTAL_PAGES));
+      renderPageList();
+      const items = document.querySelectorAll('#page-list > div');
+      if (items[currentPage - 1]) items[currentPage - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // ─── Progress bar ─────────────────────────────────────────────────────────
+    function updateProgress(done) {
+      completed = done;
+      document.getElementById('progress-text').textContent = `${done}/${TAGS.length}`;
+      document.getElementById('progress-bar').style.width  = `${(done / TAGS.length) * 100}%`;
+    }
+
+    // ─── Button label helper ──────────────────────────────────────────────────
+    const CHEVRON_RIGHT = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:6px;flex-shrink:0;">
+      <path d="M6 3L11 8L6 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+    const CHECKMARK = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:6px;flex-shrink:0;">
+      <path d="M3 8L6.5 11.5L13 4.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+
+    function setButtonLabel(btnEl, iconSrc, label) {
+      if (label === 'Next') {
+        btnEl.innerHTML = `${label}${CHEVRON_RIGHT}`;
+      } else if (label === 'Finish') {
+        btnEl.innerHTML = `${label}${CHECKMARK}`;
+      } else {
+        btnEl.innerHTML = `${label}<img src="${iconSrc}" style="width:16px;height:16px;margin-left:8px;" alt="">`;
+      }
+    }
+
+    function syncButtonLabels() {
+      let label;
+      if (!started) {
+        label = 'Get started';
+      } else if (Object.keys(signedTags).length === TAGS.length) {
+        label = 'Finish';
+      } else {
+        label = 'Next';
+      }
+      setButtonLabel(document.getElementById('btn-get-started'), PENCIL_ICON,  label);
+      setButtonLabel(document.getElementById('btn-toast-cta'),   PENCIL_ICON2, label);
+    }
+
+    // ─── Scroll arrow's current tag into view ──────────────────────────────────
+    function scrollToTag(idx) {
+      const scrollAreaEl = document.getElementById('scroll-area');
+      const tagAbsTop    = docContainer.offsetTop + TAGS[idx];
+      const target       = tagAbsTop - scrollAreaEl.clientHeight / 2 + 40;
+      scrollAreaEl.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+    }
+
+    // ─── Agree & sign modal ───────────────────────────────────────────────────
+    function openAgreeModal() {
+      // Populate signer info from the first signed tag
+      const firstSigned = signedTags[0] || signedTags[Object.keys(signedTags)[0]];
+      if (firstSigned) {
+        const name     = firstSigned.name;
+        const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+        document.getElementById('agree-initials').textContent = initials;
+        document.getElementById('agree-name').textContent     = name;
+      }
+      // Today's date
+      const now   = new Date();
+      const day   = now.getDate();
+      const month = now.toLocaleString('en-GB', { month: 'long' });
+      const year  = now.getFullYear();
+      document.getElementById('agree-date').textContent = `signed on ${day} ${month} ${year}`;
+      // Reset checkbox
+      document.getElementById('agree-checkbox').checked = false;
+      updateCompleteBtn();
+      document.getElementById('agree-modal').classList.remove('hidden');
+    }
+
+    function updateCompleteBtn() {
+      const checked = document.getElementById('agree-checkbox').checked;
+      const btn     = document.getElementById('agree-complete');
+      if (checked) {
+        btn.style.background  = '#095ae9';
+        btn.style.color       = '#ffffff';
+        btn.style.cursor      = 'pointer';
+      } else {
+        btn.style.background  = '#f3f4f6';
+        btn.style.color       = '#d1d5db';
+        btn.style.cursor      = 'not-allowed';
+      }
+    }
+
+    document.getElementById('agree-checkbox').addEventListener('change', updateCompleteBtn);
+    document.getElementById('agree-cancel').addEventListener('click', () => {
+      document.getElementById('agree-modal').classList.add('hidden');
+    });
+    document.getElementById('agree-complete').addEventListener('click', () => {
+      if (!document.getElementById('agree-checkbox').checked) return;
+      document.getElementById('agree-modal').classList.add('hidden');
+      document.getElementById('done-screen').classList.remove('hidden');
+    });
+
+    // ─── Main action (Get started / Next / Finish) ────────────────────────────
+    function handleMainAction() {
+      if (!started) {
+        started = true;
+        syncButtonLabels();
+        return;
+      }
+      // All done → open Agree & sign modal
+      if (Object.keys(signedTags).length === TAGS.length) {
+        openAgreeModal();
+        return;
+      }
+
+      // Advance arrow to the next unfilled tag (wraps around)
+      let next = -1;
+      for (let i = tagIndex + 1; i < TAGS.length; i++) {
+        if (!signedTags[i]) { next = i; break; }
+      }
+      if (next === -1) {
+        for (let i = 0; i < tagIndex; i++) {
+          if (!signedTags[i]) { next = i; break; }
+        }
+      }
+      if (next !== -1) {
+        tagIndex = next;
+        updateOverlayPositions();
+        scrollToTag(next);
+      }
+    }
+
+    // ─── Button wiring ────────────────────────────────────────────────────────
+    document.getElementById('btn-get-started').addEventListener('click', handleMainAction);
+    document.getElementById('btn-toast-cta').addEventListener('click',   handleMainAction);
+    // Decline button → open decline modal
+    document.getElementById('btn-decline').addEventListener('click', () => {
+      document.getElementById('decline-reason').value = '';
+      document.getElementById('decline-modal').classList.remove('hidden');
+    });
+    document.getElementById('decline-cancel').addEventListener('click', () => {
+      document.getElementById('decline-modal').classList.add('hidden');
+    });
+    document.getElementById('decline-confirm').addEventListener('click', () => {
+      document.getElementById('decline-modal').classList.add('hidden');
+      document.getElementById('declined-overlay').classList.remove('hidden');
+    });
+    document.getElementById('btn-undo-decline').addEventListener('click', () => {
+      document.getElementById('declined-overlay').classList.add('hidden');
+    });
+
+    // ─── Signature badge clicks ───────────────────────────────────────────────
+    document.querySelectorAll('.sig-badge').forEach(badge => {
+      badge.addEventListener('click', () => {
+        const idx = parseInt(badge.dataset.tagIndex);
+        if (signedTags[idx]) return;  // already signed — no-op
+        // Auto-start if needed
+        if (!started) { started = true; syncButtonLabels(); }
+        openSignatureModal(idx);
+      });
+    });
+
+    // ─── Fixed overlays — track document position ─────────────────────────────
+    const nextArrow     = document.getElementById('next-arrow');
+    const progressToast = document.getElementById('progress-toast');
+    const docContainer  = document.getElementById('doc-container');
+    const scrollArea    = document.getElementById('scroll-area');
+    const ARROW_W       = 73;
+    const ARROW_GAP     = 8;
+
+    function updateOverlayPositions() {
+      const rect = docContainer.getBoundingClientRect();
+      nextArrow.style.left     = (rect.left - ARROW_W - ARROW_GAP) + 'px';
+      nextArrow.style.top      = (rect.top  + TAGS[tagIndex]) + 'px';
+      progressToast.style.left = (rect.left + rect.width / 2) + 'px';
+    }
+
+    scrollArea.addEventListener('scroll', updateOverlayPositions);
+    window.addEventListener('resize',     updateOverlayPositions);
+
+    // ─── Signature Modal ──────────────────────────────────────────────────────
+    let activeTagIndex  = null;
+    let selectedFont    = 'Great Vibes';
+    let activeModalTab  = 'type';
+    let canvasInited    = false;
+
+    function openSignatureModal(idx) {
+      activeTagIndex = idx;
+      selectedFont   = 'Great Vibes';
+      activeModalTab = 'type';
+      document.getElementById('sig-name-input').value = 'Jamie Phan';
+      updateFontPreviews();
+      updateFontSelection();
+      switchModalTab('type');
+      // Reset upload preview
+      document.getElementById('upload-preview').style.display = 'none';
+      document.getElementById('signature-modal').classList.remove('hidden');
+    }
+
+    function closeSignatureModal() {
+      document.getElementById('signature-modal').classList.add('hidden');
+      activeTagIndex = null;
+    }
+
+    function switchModalTab(tab) {
+      activeModalTab = tab;
+      ['type', 'draw', 'upload'].forEach(t => {
+        const el = document.getElementById(`modal-tab-${t}`);
+        el.style.display = (t === tab) ? 'flex' : 'none';
+      });
+      document.querySelectorAll('.modal-tab').forEach(btn => {
+        const isActive = btn.dataset.tab === tab;
+        btn.style.borderBottom = isActive ? '2px solid #1a56db' : '2px solid transparent';
+        btn.style.color        = isActive ? '#1a56db' : '#374151';
+      });
+      if (tab === 'draw') initDrawCanvas();
+    }
+
+    function updateFontPreviews() {
+      const name = document.getElementById('sig-name-input').value || 'Your signature';
+      document.querySelectorAll('.sig-preview').forEach(el => el.textContent = name);
+    }
+
+    function updateFontSelection() {
+      document.querySelectorAll('.font-option').forEach(el => {
+        const sel = el.dataset.font === selectedFont;
+        el.style.background   = sel ? '#ebf5ff' : '#f3f4f6';
+        el.style.borderColor  = sel ? '#095ae9' : 'transparent';
+      });
+    }
+
+    function handleModalDone() {
+      if (activeTagIndex === null) return;
+      const name = document.getElementById('sig-name-input').value.trim() || 'Signature';
+      signedTags[activeTagIndex] = { name, font: selectedFont };
+      applySignedBadge(activeTagIndex, name, selectedFont);
+
+      // Update progress & button labels
+      updateProgress(Object.keys(signedTags).length);
+      syncButtonLabels();
+
+      // Move arrow to next unsigned tag, or hide if all done
+      const nextUnsigned = TAGS.findIndex((_, i) => !signedTags[i]);
+      if (nextUnsigned !== -1) {
+        tagIndex = nextUnsigned;
+        nextArrow.style.display = '';
+        updateOverlayPositions();
+      } else {
+        nextArrow.style.display = 'none';
+      }
+
+      closeSignatureModal();
+    }
+
+    function applySignedBadge(idx, name, font) {
+      const badge = document.getElementById(`sig-badge-${idx}`);
+      const left  = badge.style.left;
+      const top   = badge.style.top;
+      badge.className = 'absolute rounded-md';
+      badge.style.cssText = `left:${left}; top:${top}; padding:10px 16px; background:white; border:1.5px solid #d1d5db; cursor:default;`;
+      badge.innerHTML = `<span style="font-family:'${font}',cursive; font-size:20px; color:#111928; line-height:1.4; white-space:nowrap;">${name}</span>`;
+    }
+
+    // Modal button events
+    document.getElementById('modal-back').addEventListener('click',   closeSignatureModal);
+    document.getElementById('modal-cancel').addEventListener('click', closeSignatureModal);
+    document.getElementById('modal-done').addEventListener('click',   handleModalDone);
+
+    // Close on backdrop click
+    document.getElementById('signature-modal').addEventListener('click', e => {
+      if (e.target.id === 'signature-modal') closeSignatureModal();
+    });
+
+    // Tab switching
+    document.querySelectorAll('.modal-tab').forEach(btn => {
+      btn.addEventListener('click', () => switchModalTab(btn.dataset.tab));
+    });
+
+    // Font option selection
+    document.querySelectorAll('.font-option').forEach(el => {
+      el.addEventListener('click', () => {
+        selectedFont = el.dataset.font;
+        updateFontSelection();
+      });
+    });
+
+    // Name input → live preview
+    document.getElementById('sig-name-input').addEventListener('input', updateFontPreviews);
+
+    // ─── Draw canvas ──────────────────────────────────────────────────────────
+    let isDrawing = false, lastX = 0, lastY = 0;
+
+    function initDrawCanvas() {
+      const canvas = document.getElementById('draw-canvas');
+      if (canvasInited) return;
+      canvas.width  = canvas.offsetWidth  || 580;
+      canvas.height = canvas.offsetHeight || 200;
+      canvasInited  = true;
+    }
+
+    const drawCanvas = document.getElementById('draw-canvas');
+
+    drawCanvas.addEventListener('mousedown', e => {
+      isDrawing = true;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+    drawCanvas.addEventListener('mousemove', e => {
+      if (!isDrawing) return;
+      const ctx = drawCanvas.getContext('2d');
+      ctx.strokeStyle = '#111928';
+      ctx.lineWidth   = 2;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+    drawCanvas.addEventListener('mouseup',    () => isDrawing = false);
+    drawCanvas.addEventListener('mouseleave', () => isDrawing = false);
+
+    document.getElementById('draw-clear').addEventListener('click', () => {
+      const c = document.getElementById('draw-canvas');
+      c.getContext('2d').clearRect(0, 0, c.width, c.height);
+    });
+
+    // ─── Upload tab ───────────────────────────────────────────────────────────
+    document.getElementById('upload-label').addEventListener('click', () => {
+      document.getElementById('upload-input').click();
+    });
+    document.getElementById('upload-input').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        document.getElementById('upload-img').src = ev.target.result;
+        document.getElementById('upload-preview').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // ─── Init ─────────────────────────────────────────────────────────────────
+    renderPageList();
+    updateProgress(0);
+    syncButtonLabels();
+    updateOverlayPositions();
+  </script>
+</body>
+</html>
