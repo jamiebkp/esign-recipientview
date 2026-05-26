@@ -55,7 +55,7 @@
                          hover:bg-blue-700 active:bg-blue-800 transition-colors whitespace-nowrap"
                   style="height:40px; padding:0 12px;">
             Get started
-            <img src="assets/1828b820282d2d8a85e85324c6b145f0adfe2f9f.svg"
+            <img src="assets/pencil-line-01.svg"
                  style="width:16px;height:16px;" alt="">
           </button>
         </div>
@@ -67,13 +67,8 @@
           <!-- Document container — badges are relative to this -->
           <div id="doc-container" class="relative shrink-0" style="width:700px;">
 
-            <!-- Page image -->
-            <div class="border border-[#d1d5db] overflow-hidden relative" style="height:932px;">
-              <img src="assets/4a986f6d8d4277daa40c3704bc2bd53866402ba9.png"
-                   class="absolute max-w-none pointer-events-none"
-                   style="width:103.85%; height:103.75%; left:-1.92%; top:-2.42%;"
-                   alt="Contract Agreement document">
-            </div>
+            <!-- Page image (HTML-rendered contract document) -->
+            <div id="doc-page-1" class="border border-[#d1d5db] overflow-hidden" style="height:932px; background:white;"></div>
 
             <!-- Signature badge 0 -->
             <div id="sig-badge-0"
@@ -116,11 +111,11 @@
     <!-- ===== "Next" ARROW — fixed, JS-positioned to doc left edge ===== -->
     <div id="next-arrow"
          class="fixed flex items-center justify-center pointer-events-none select-none"
-         style="width:73px; height:36px; z-index:20;">
-      <img src="assets/1cb5939d2894d07c827f48709aad072ecb5fc9c8.svg"
+         style="width:71px; height:36px; z-index:20;">
+      <img src="assets/arrow.svg"
            style="position:absolute; inset:0; width:100%; height:100%;" alt="">
-      <span class="relative text-sm font-bold text-[#8e4b10] whitespace-nowrap"
-            style="z-index:1; padding-right:14px;">Next</span>
+      <span class="relative text-sm font-bold whitespace-nowrap"
+            style="z-index:1; color:#78350F; padding-right:17px;">Next</span>
     </div>
 
     <!-- ===== TOAST / PROGRESS BAR — fixed at bottom, JS-centred on document ===== -->
@@ -143,9 +138,9 @@
       <button id="btn-toast-cta"
               class="bg-[#095ae9] rounded-lg text-sm font-medium text-white flex items-center gap-2
                      hover:bg-blue-700 active:bg-blue-800 transition-colors shrink-0 whitespace-nowrap"
-              style="height:32px; padding:0 12px;">
+              style="height:40px; padding:0 12px;">
         Get started
-        <img src="assets/dbcc5ac934715f3c49c0d1c0977f2824308572c3.svg"
+        <img src="assets/pencil-line-01.svg"
              style="width:16px;height:16px;" alt="">
       </button>
     </div>
@@ -219,7 +214,7 @@
 
       <!-- Top bar -->
       <div class="bg-white border-b border-[#e5e7eb] shrink-0 flex items-center" style="height:48px; padding:0 20px;">
-        <img src="assets/5ba75c28083c5d1532a7ee1c788be5287a395a71.svg"
+        <img src="assets/logo.svg"
              style="height:28px; width:auto;" alt="Bookipi">
       </div>
 
@@ -460,11 +455,86 @@
 
   <script>
     // ─── Constants ────────────────────────────────────────────────────────────
-    const THUMBNAIL_SRC = 'assets/d53ded07b3767b39d88ea67b1aff4407ea30601f.png';
-    const PENCIL_ICON   = 'assets/1828b820282d2d8a85e85324c6b145f0adfe2f9f.svg';
-    const PENCIL_ICON2  = 'assets/dbcc5ac934715f3c49c0d1c0977f2824308572c3.svg';
+    const PENCIL_ICON   = 'assets/pencil-line-01.svg';
+    const PENCIL_ICON2  = 'assets/pencil-line-01.svg';
+    const CHECK_CIRCLE  = 'assets/check-circle.svg';
     const TOTAL_PAGES   = 8;
     const TAGS          = [547, 718, 850];  // px from doc top for each badge
+
+    // ─── Contract document HTML ───────────────────────────────────────────────
+    // Returns the inner HTML for a contract document page.
+    // Layout is tuned so signature fields fall near TAGS y-positions (547, 718, 850).
+    function getDocumentPageHTML() {
+      return `
+        <div style="padding:52px 60px 40px; font-family:'Times New Roman',Georgia,serif; color:#111827; font-size:13px; line-height:1.7; background:white; height:932px; box-sizing:border-box; overflow:hidden;">
+
+          <!-- Title block — y≈52 to 178 -->
+          <div style="text-align:center; margin-bottom:24px;">
+            <div style="font-size:30px; font-weight:bold; letter-spacing:4px; line-height:1.2; margin-bottom:0;">CONTRACT</div>
+            <div style="font-size:30px; font-weight:bold; letter-spacing:4px; line-height:1.2; margin-bottom:8px;">AGREEMENT</div>
+            <div style="font-size:13px; color:#4b5563;">BY-Company Name Here</div>
+          </div>
+
+          <!-- Date — y≈178 -->
+          <p style="margin:0 0 16px;">This Agreement is made on ______/______/______.</p>
+
+          <!-- BETWEEN — y≈216 -->
+          <p style="font-weight:bold; margin:0 0 6px;">BETWEEN</p>
+          <ol style="margin:0 0 20px 18px; padding:0;">
+            <li style="margin-bottom:4px;">[The First Party Name Here]</li>
+            <li>[The Second Party Name Here]</li>
+          </ol>
+
+          <!-- RECITALS — y≈312 -->
+          <p style="font-weight:bold; margin:0 0 8px;">RECITALS</p>
+          <ol style="margin:0 0 20px 16px; padding:0;">
+            <li style="padding-bottom:12px; border-bottom:1px solid #d1d5db; margin-bottom:11px;">___________________________________________</li>
+            <li style="padding-bottom:12px; border-bottom:1px solid #d1d5db; margin-bottom:11px;">___________________________________________</li>
+            <li style="padding-bottom:12px; border-bottom:1px solid #d1d5db; margin-bottom:11px;">___________________________________________</li>
+            <li style="padding-bottom:12px; border-bottom:1px solid #d1d5db; margin-bottom:0;">___________________________________________</li>
+          </ol>
+          <!-- y≈342 + 4×(22+12+1+11) = 342+184=526, + ol-margin 20 = 546 ≈ BADGE 0 at 547 -->
+
+          <!-- AGREEMENTS — y≈546 -->
+          <p style="font-weight:bold; margin:0 0 8px;">AGREEMENTS</p>
+          <div style="border-bottom:1px solid #d1d5db; padding-bottom:10px; margin-bottom:20px; font-size:13px;">
+            ______________________________________________________________:
+          </div>
+
+          <!-- 1. Organization Information — y≈628 -->
+          <p style="font-style:italic; font-weight:bold; margin:0 0 6px;">1. Organization Information.</p>
+          <div style="border-bottom:1px solid #d1d5db; padding-bottom:10px; margin-bottom:6px;"></div>
+          <!-- y≈628+22+6+1+10+6=673 -->
+          <div style="border-bottom:1px solid #d1d5db; padding-bottom:10px; margin-bottom:6px;"></div>
+          <!-- y≈690 -->
+          <div style="border-bottom:1px solid #d1d5db; padding-bottom:10px; margin-bottom:6px;"></div>
+          <!-- y≈707 -->
+          <div style="border-bottom:1px solid #d1d5db; padding-bottom:10px; margin-bottom:20px;"></div>
+          <!-- y≈724 ≈ BADGE 1 at 718 -->
+
+          <!-- 2. Services to be performed — y≈744 -->
+          <p style="font-style:italic; font-weight:bold; margin:0 0 8px;">2. Services to be performed.</p>
+          <!-- y≈766 -->
+          <p style="margin:0 0 8px; color:#374151;">2.1&nbsp;&nbsp;_____________________________________________</p>
+          <!-- y≈796 -->
+          <p style="margin:0 0 8px; color:#374151;">2.2&nbsp;&nbsp;_____________________________________________</p>
+          <!-- y≈826 -->
+          <p style="margin:0 0 24px; color:#374151;">2.3&nbsp;&nbsp;_____________________________________________</p>
+          <!-- y≈858 ≈ BADGE 2 at 850 -->
+
+          <!-- Trailing content — y≈858 -->
+          <div style="border-bottom:1px solid #d1d5db; padding-bottom:8px; margin-bottom:8px;"></div>
+          <div style="font-size:11px; color:#9ca3af; margin-top:4px;">
+            This document is legally binding upon signature. Authorised signatories only.
+          </div>
+        </div>`;
+    }
+
+    // Inject the document HTML on load
+    function renderDocumentPage() {
+      const el = document.getElementById('doc-page-1');
+      if (el) el.innerHTML = getDocumentPageHTML();
+    }
 
     // ─── State ────────────────────────────────────────────────────────────────
     let currentPage  = 1;
@@ -474,6 +544,9 @@
     let signedTags   = {};  // { 0: {name, font}, 1: {name, font} }
 
     // ─── Page thumbnail list ──────────────────────────────────────────────────
+    // Scale factor: thumbnail (131×170) vs document (700×932)
+    const THUMB_SCALE = 131 / 700;  // ≈ 0.187
+
     function renderPageList() {
       const list = document.getElementById('page-list');
       list.innerHTML = '';
@@ -489,8 +562,10 @@
         item.innerHTML = `
           <div class="flex gap-4 items-start">
             <span class="text-sm font-medium text-black shrink-0" style="min-width:10px;">${i}</span>
-            <div class="border border-[#e5e7eb] overflow-hidden relative shrink-0" style="width:131px; height:170px;">
-              <img src="${THUMBNAIL_SRC}" class="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="Page ${i}">
+            <div class="border border-[#e5e7eb] overflow-hidden shrink-0" style="width:131px; height:170px; position:relative;">
+              <div style="position:absolute; top:0; left:0; width:700px; height:932px; transform:scale(${THUMB_SCALE}); transform-origin:top left; pointer-events:none;">
+                ${getDocumentPageHTML()}
+              </div>
             </div>
           </div>`;
         item.addEventListener('click', () => goToPage(i));
@@ -513,11 +588,11 @@
     }
 
     // ─── Button label helper ──────────────────────────────────────────────────
-    const CHEVRON_RIGHT = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:6px;flex-shrink:0;">
+    const CHEVRON_RIGHT = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
       <path d="M6 3L11 8L6 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
 
-    const CHECKMARK = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:6px;flex-shrink:0;">
+    const CHECKMARK = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
       <path d="M3 8L6.5 11.5L13 4.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
 
@@ -525,9 +600,9 @@
       if (label === 'Next') {
         btnEl.innerHTML = `${label}${CHEVRON_RIGHT}`;
       } else if (label === 'Finish') {
-        btnEl.innerHTML = `${label}${CHECKMARK}`;
+        btnEl.innerHTML = `${label}<img src="${CHECK_CIRCLE}" style="width:16px;height:16px;" alt="">`;
       } else {
-        btnEl.innerHTML = `${label}<img src="${iconSrc}" style="width:16px;height:16px;margin-left:8px;" alt="">`;
+        btnEl.innerHTML = `${label}<img src="${iconSrc}" style="width:16px;height:16px;" alt="">`;
       }
     }
 
@@ -839,6 +914,7 @@
     });
 
     // ─── Init ─────────────────────────────────────────────────────────────────
+    renderDocumentPage();
     renderPageList();
     updateProgress(0);
     syncButtonLabels();
